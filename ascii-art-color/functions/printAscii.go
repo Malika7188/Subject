@@ -1,6 +1,9 @@
 package functions
 
-import "fmt"
+import (
+	"fmt"
+	
+)
 
 // PrintChar takes a rune and font data, and returns the corresponding lines for that character
 func PrintChar(c rune, fontData [95][8]string) ([]string, error) {
@@ -17,7 +20,7 @@ func PrintChar(c rune, fontData [95][8]string) ([]string, error) {
 	// Append each line of the character's font data to the lines slice
 	for i := 0; i < 8; i++ {
 		lines = append(lines, fontData[charIndex][i])
-	}
+	} 
 	
 
 	// Return the lines slice and a nil error to indicate success

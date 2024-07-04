@@ -1,10 +1,11 @@
 package tests
 
 import (
-	"ascii-artcolor/functions"
 	"os"
 	"strings"
 	"testing"
+
+	"ascii-art-color/functions"
 )
 
 func TestPrintChar(t *testing.T) {

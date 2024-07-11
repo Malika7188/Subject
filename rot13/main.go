@@ -26,6 +26,7 @@ func Rot13(s string) string {
 }
 
 func main() {
-	//Rot13("abc")
+	Rot13("abc")
 	Rot13("hello there")
+	Rot13("ab")
 }

@@ -3,9 +3,15 @@ package main
 import (
 	"fmt"
 	"os"
+
+	///"github.com/01-edu/z01"
 )
 
 func main() {
+	if len(os.Args) != 2 {
+		//z01.PrintRune('\n')
+		return
+	}
 	args := os.Args[1]
 
 	var result string
@@ -20,9 +26,9 @@ func main() {
 		} else {
 			result += string(char)
 		}
-		if !((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z'))  {
-			fmt.Println(char)
-		}
+		// if !((char >= 'a' && char <= 'z') || (char >= 'A' && char <= 'Z'))  {
+		// 	fmt.Println(char)
+		// }
 	}
 	fmt.Println(result)
 }

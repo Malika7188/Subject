@@ -14,8 +14,8 @@ func main() {
 
 	input := os.Args[1]
 
-	inputconv, err := strconv.Atoi(input)
-	if err != nil || inputconv <= 0 || inputconv >= 4000 {
+	value, err := strconv.Atoi(input)
+	if err != nil || value <= 0 || value >= 4000 {
 		fmt.Println("ERROR: cannot convert to roman digit")
 		return
 	}
@@ -26,28 +26,28 @@ func main() {
 	index := len(numbers) - 1
 	var final string
 
-	for inputconv > 0 {
-		for numbers[index] <= inputconv {
-			if inputconv-numbers[index] == 0 {
+	for value > 0 {
+		for numbers[index] <= value {
+			if value-numbers[index] == 0 {
 				if roman[index] == "CM" || roman[index] == "CD" || roman[index] == "XC" || roman[index] == "XL" || roman[index] == "IX" || roman[index] == "IV" {
 					fmt.Print("(", string(roman[index][1]), " - ", string(roman[index][0]), ")",)
 					final += roman[index]
-					inputconv -= numbers[index]
+					value -= numbers[index]
 					break
 				}
 				final += roman[index]
 				fmt.Print(roman[index])
-				inputconv -= numbers[index]
+				value -= numbers[index]
 				break
 			} else {
 				if roman[index] == "CM" || roman[index] == "CD" || roman[index] == "XC" || roman[index] == "XL" || roman[index] == "IX" || roman[index] == "IV" {
 					fmt.Print("(", string(roman[index][1]), " - ", string(roman[index][0]), ")", "+")
 					final += roman[index]
-					inputconv -= numbers[index]
+					value -= numbers[index]
 				} else {
 					final += roman[index]
 					fmt.Print(roman[index], "+")
-					inputconv -= numbers[index]
+					value -= numbers[index]
 				}
 			}
 		}

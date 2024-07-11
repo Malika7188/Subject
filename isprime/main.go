@@ -16,11 +16,14 @@ func Isprime(number int) bool {
 }
 
 func FindPrevPrime(n int) int {
-	if !Isprime(n) {
-		n--
+	for n > 1{
+		if Isprime(n){
+			return n
+		}
+		n--	
 	}
-	if n < 2 {
-		return -1
+	if n < 1 {
+		return 0
 	}
 	return n
 }
@@ -34,5 +37,5 @@ func FindNextPrime(n int) int {
 
 func main() {
 	fmt.Println(FindPrevPrime(5))
-	fmt.Println(FindPrevPrime(4))
+	fmt.Println(FindPrevPrime(678))
 }

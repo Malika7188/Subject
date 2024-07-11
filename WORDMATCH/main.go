@@ -22,7 +22,7 @@ for _, char := range str1 {
 		for i, char1 := range str2 {
 			if char == char1 {
 				result += string(char1)
-				str2 = str2[i:]
+				str2 = str2[i+1:]
 
 				output = true
 				break

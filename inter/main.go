@@ -24,6 +24,7 @@ func main() {
 				seen[char] = true
 			}
 		}
+
 	}
 
 	printed := make(map[rune]bool)
@@ -34,7 +35,7 @@ func main() {
 			printed[char] = true
 		}
 	}
-	z01.PrintRune('\n')
+	 z01.PrintRune('\n')
 
 
 

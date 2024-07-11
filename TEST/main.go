@@ -1,14 +1,11 @@
 package main
 
-import (
-	"revision"
-
-	"github.com/01-edu/z01"
-)
+import "revision"
 
 func main() {
-	z01.PrintRune(revision.LastRune("Hello!"))
-	z01.PrintRune(revision.LastRune("Salut!"))
-	z01.PrintRune(revision.LastRune("Ola!"))
-	z01.PrintRune('\n')
+	revision.Chunk([]int{}, 10)
+	revision.Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 0)
+	revision.Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 3)
+	revision.Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 5)
+	revision.Chunk([]int{0, 1, 2, 3, 4, 5, 6, 7}, 4)
 }

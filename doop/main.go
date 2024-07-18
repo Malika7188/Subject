@@ -64,24 +64,6 @@ func main() {
 	os.Stdout.WriteString(num + "\n")
 }
 
-// func Atoi(s string) int {
-// 	sign := 1
-// 	result := 0
-
-// 	for i, char := range s {
-// 		if i == 0 && char == '-' {
-// 			sign = -1
-// 		} else if i == 0 && char == '+' {
-// 			sign = 1
-// 		}
-// 		if char < '0' || char > '9' {
-// 			os.Exit(0)
-// 		}
-// 		result = (result * 10) + int(char-'0')
-// 	}
-// 	return result*sign
-// }
-
 func Atoi(str string) int {
 	isneg := false
 	if str[0] == '-' {
@@ -105,7 +87,6 @@ func Atoi(str string) int {
 	return result
 }
 
-
 func Itoa(number int) string {
 	isneg := false
 	if number < 0 {
@@ -122,7 +103,7 @@ func Itoa(number int) string {
 		result = string(digit+'0') + result
 		number /= 10
 	}
-	if isneg == true {
+	if isneg {
 		return "-" + result
 	}
 	return result

@@ -37,7 +37,8 @@ func main() {
 
 	for count > 0 {
 		digit := count%10
-		result = append([]rune{rune(digit + '0')}, result...)
+		// result = append([]rune{rune(digit + '0')}, result...)
+		result = append([]rune{rune(digit +'0')}, result...)
 		count /= 10
 	}
 	for _, char := range result {

@@ -8,8 +8,8 @@ func LastWord(s string) string {
 			check = true
 		}
 	}
-	if check{
-		for i := len(s)-1; i >= 0; i-- {
+	if check {
+		for i := len(s) - 1; i >= 0; i-- {
 			if word == "" && s[i] == ' ' {
 				continue
 			}

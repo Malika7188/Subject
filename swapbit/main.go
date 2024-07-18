@@ -6,5 +6,5 @@ func SwapBits(octet byte) byte {
 	return octet >> 4 | octet << 4
 }
 func main() {
-	fmt.Println(SwapBits(7))
+	fmt.Println(SwapBits((0b00001000)))
 }

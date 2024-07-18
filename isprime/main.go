@@ -29,13 +29,19 @@ func FindPrevPrime(n int) int {
 }
 
 func FindNextPrime(n int) int {
-	if !Isprime(n) {
+	for n > 1 {
+		if Isprime(n) {
+			return n
+		}
 		n++
+	}
+	if n < 0 {
+		return 0
 	}
 	return n
 }
 
 func main() {
-	fmt.Println(FindPrevPrime(5))
-	fmt.Println(FindPrevPrime(678))
+	fmt.Println(FindNextPrime(-5))
+	fmt.Println(FindNextPrime(4))
 }

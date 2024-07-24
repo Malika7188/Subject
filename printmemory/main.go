@@ -1,48 +1,27 @@
 package main
 
 import (
-	"unicode"
+	// "unicode"
 
 	"github.com/01-edu/z01"
 )
 
 func PrintMemory(arr [10]byte) {
-	for i, c := range arr {
-		if !unicode.IsGraphic(rune(c)) {
-			z01.PrintRune('0')
-			z01.PrintRune('0')
-			if i == 3 || i == 7 || i == 9 {
-				z01.PrintRune('\n')
-			} else {
-				z01.PrintRune(' ')
-			}
-		} else {
-			num := int(c)
-			hexChars := "0123456789ABCDEF"
-			result := ""
-			for num > 0 {
-				remainder := num % 16
-				result = string(hexChars[remainder]) + result
-				num = num / 16
-			}
-			if i == 3 || i == 7 || i == 9 {
-				PrintStr(result)
-				z01.PrintRune('\n')
-			} else {
-				PrintStr(result)
-				z01.PrintRune(' ')
-			}
+	for i, cha := range arr {
+		Hex(int(cha))
+		if (i+1)%4 == 0 {
+			z01.PrintRune('\n')
 		}
 	}
+	z01.PrintRune('\n')
 
-	for _, c := range arr {
-		if unicode.IsGraphic(rune(c)) {
-			z01.PrintRune(rune(c))
+	for _, char := range arr {
+		if char >= 32 && char <= 128 {
+			PrintStr(string(char))
 		} else {
 			z01.PrintRune('.')
 		}
 	}
-
 	z01.PrintRune('\n')
 }
 
@@ -54,4 +33,18 @@ func PrintStr(str string) {
 	for _, char := range str {
 		z01.PrintRune(char)
 	}
+}
+func Hex(num int){
+	res := ""
+	vals := "0123456789abcdef"
+
+	if num == 0 {
+		res = "00" + res
+	}
+	for num > 0 {
+		digit := num % 16
+		res = string(vals[digit]) + res
+		num /= 16
+	}
+	PrintStr(res + " ")
 }

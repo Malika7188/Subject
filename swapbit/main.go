@@ -3,12 +3,8 @@ package main
 import "fmt"
 
 func SwapBits(octet byte) byte {
-	s1 := octet >> 4
-	s2 := octet << 4
-
-	return s1 | s2
+	return octet >> 4 | octet << 4
 }
-
 func main() {
-	fmt.Println(SwapBits(7))
+	fmt.Println(SwapBits((0b00001000)))
 }

@@ -1,6 +1,8 @@
 package main
 
 import (
+	//"errors"
+	//"log"
 	"os"
 	//"strconv"
 )
@@ -9,9 +11,6 @@ func main() {
 	if len(os.Args) != 4 {
 		return
 	}
-	// val1 := os.Args[1]
-	// val2 := os.Args[3]
-
 	val1 := Atoi(os.Args[1])
 	val2 := Atoi(os.Args[3])
 
@@ -24,8 +23,6 @@ func main() {
 		if operator == value {
 			op = true
 			break
-		} else {
-			op = false
 		}
 	}
 	if !op {
@@ -33,7 +30,6 @@ func main() {
 	}
 	var answer int
 
-	//
 	if operator == "%" && val2 == 0 {
 		os.Stdout.WriteString("No modulo by 0\n")
 		return
@@ -48,6 +44,7 @@ func main() {
 	if val2 <= -9223372036854775807 || val2 >= 9223372036854775807 {
 		return
 	}
+
 	if operator == "+" {
 		answer = val1 + val2
 	}
@@ -79,11 +76,12 @@ func Atoi(str string) int {
 	}
 	result := 0
 	for _, val := range str {
-		if val >= '0' && val <= '9' {
-			result = (result * 10) + int(val-'0')
+		if val < '0' || val > '9' {
+			os.Exit(0)
 		}
+		result = (result * 10) + int(val-'0')
 	}
-	if isneg == true {
+	if isneg {
 		result *= -1
 	}
 	return result
@@ -103,12 +101,10 @@ func Itoa(number int) string {
 	for number > 0 {
 		digit := number % 10
 		result = string(digit+'0') + result
-		// result = strdigit + result
 		number /= 10
 	}
-	if isneg == true {
+	if isneg {
 		return "-" + result
 	}
 	return result
 }
-

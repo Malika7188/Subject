@@ -12,9 +12,12 @@ func PrintMemory(arr [10]byte) {
 		}
 	}
 	for i := 0; i < len(result); i++ {
-		print(result[i])
+		// print(result[i])
 		// z01.PrintRune('\n')
-		if i == 3 || i == 7 || i == 9 {
+		// if i == 3 || i == 7 || i == 9 {
+		// 	z01.PrintRune('\n')
+		// }
+		if (i+1)%4 == 0 {
 			z01.PrintRune('\n')
 		}
 	}

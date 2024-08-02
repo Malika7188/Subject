@@ -32,7 +32,6 @@ func SplitStr(str string) []string {
 	if res != "" {
 		word = append(word, res)
 	}
-	// fmt.Println(word)
 	return word
 }
 func main() {
@@ -43,4 +42,3 @@ func main() {
 	fmt.Println(IsCapitalized("!!!!Whatsthis4"))
 	fmt.Println(IsCapitalized(""))
 }
-

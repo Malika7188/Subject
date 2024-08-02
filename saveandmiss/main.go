@@ -4,7 +4,6 @@ import "fmt"
 
 func SaveAndMiss(arg string, num int) string {
 	res := ""
-<<<<<<< HEAD
 	if num <= 0 {
 		return arg
 	}
@@ -18,7 +17,6 @@ func SaveAndMiss(arg string, num int) string {
 	}
 	return res
 }
-=======
 	result := ""
 	// if arg == ""{
 	// 	return ""
@@ -66,7 +64,6 @@ func SaveAndMiss(arg string, num int) string {
 }
 
 
->>>>>>> d9e9c31757a4f1c215a1464dc081e74b1d5b88c7
 func main() {
 	fmt.Println(SaveAndMiss("123456789", 3))
 	fmt.Println(SaveAndMiss("abcdefghijklmnopqrstuvwyz", 3))

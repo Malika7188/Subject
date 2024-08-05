@@ -17,51 +17,51 @@ func SaveAndMiss(arg string, num int) string {
 	}
 	return res
 }
-	result := ""
-	// if arg == ""{
-	// 	return ""
-	// }
-	// slice := []rune(arg)
-	// res := []rune{}
-	// for i := 0; i < len(slice); i++{
+// 	result := ""
+// 	// if arg == ""{
+// 	// 	return ""
+// 	// }
+// 	// slice := []rune(arg)
+// 	// res := []rune{}
+// 	// for i := 0; i < len(slice); i++{
 		
-	// }
+// 	// }
 
-	// return string(res)
+// 	// return string(res)
 
 	 
-	if num <= 0 {
-		return arg
-	}
-	// for _, ch := range arg {
-	// 	if ch == ' ' {
-	// 		continue
-	// 	}
-	// 	res += string(ch)
-	// }
-	// for  i := 0; i < len(res); i+=num {
-	// 	if i + num > len(res) {
-	// 		result += res[i:]
-	// 	} else {
-	// 		result += string(res[i:i+num])
-	// 	}
-	// 	i++
-	// }
-	// return result
+// 	if num <= 0 {
+// 		return arg
+// 	}
+// 	// for _, ch := range arg {
+// 	// 	if ch == ' ' {
+// 	// 		continue
+// 	// 	}
+// 	// 	res += string(ch)
+// 	// }
+// 	// for  i := 0; i < len(res); i+=num {
+// 	// 	if i + num > len(res) {
+// 	// 		result += res[i:]
+// 	// 	} else {
+// 	// 		result += string(res[i:i+num])
+// 	// 	}
+// 	// 	i++
+// 	// }
+// 	// return result
 	
-	for i := 0; i < len(arg); i++ {
-		split := i+num
-		if split > len(arg) {
-			split = len(arg)
-		}
-		res += arg[i:split]
-		result += res
-		res = ""
-		i = i+(num*2)-1
-	}
+// 	for i := 0; i < len(arg); i++ {
+// 		split := i+num
+// 		if split > len(arg) {
+// 			split = len(arg)
+// 		}
+// 		res += arg[i:split]
+// 		result += res
+// 		res = ""
+// 		i = i+(num*2)-1
+// 	}
 
-	return result
-}
+// 	return result
+// }
 
 
 func main() {

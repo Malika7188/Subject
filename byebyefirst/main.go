@@ -8,12 +8,13 @@ func ByeByeFirst(strings []string) []string {
 	if len(strings) == 0 {
 		return result
 	}
-	for i := 0; i < len(strings); i++ {
-		if strings[i] == strings[0] {
-			result = strings[1:]
-		}
-	}
-	return result
+	return strings[1:]
+	// for i := 0; i < len(strings); i++ {
+	// 	if strings[i] == strings[0] {
+	// 		result = strings[1:]
+	// 	}
+	// }
+	// return result
 }
 func main() {
 	fmt.Println(ByeByeFirst([]string{}))

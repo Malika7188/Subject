@@ -13,31 +13,27 @@ func NotDecimal(dec string) string {
 	}
 	res := ""
 	for _, ch := range dec {
-		if (ch >= 'A' && ch <= 'Z') || (ch >= 'a' && ch <= 'z') {
-			return dec
+		if ch < '0' || ch > '9' {
+			if ch != '-' && ch != '.' {
+				return dec + "\n"
+			}
 		}
 		if ch != '.' {
 			res += string(ch)
 		}
 	}
-	for res[0] == '0' {
+	for res[0] == '0' && len(res) > 1 {
 		res = res[1:]
+	}
+	if res == "0" {
+		return "\n"
 	}
 	return res + "\n"
 }
 
-// func treamS(str string) string {
-// 	res := ""
-// 	for i, ch := range str {
-// 		if ch == '0' && i == 0 {
-// 			res += str[1:]
-// 		}
-// 	}
-// 	return res
-// }
-
 func main() {
-	fmt.Print(NotDecimal("0.1"))
+	fmt.Print(NotDecimal("0.001"))
+	fmt.Print(NotDecimal("0.0000000000"))
 	fmt.Print(NotDecimal("174.2"))
 	fmt.Print(NotDecimal("0.1255"))
 	fmt.Print(NotDecimal("1.20525856"))

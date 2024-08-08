@@ -5,9 +5,10 @@ import (
 )
 
 func main() {
-	// if len(os.Args) > 1 {
+	// if len(os.Args) != 2 {
 	// 	return
 	// }
+	// args := os.Args[1]
 
 	for i := 9; i >= 0; i-- {
 		for j := i - 1; j >= 0; j-- {

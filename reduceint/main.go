@@ -5,7 +5,7 @@ import "fmt"
 func ReduceInt(a []int, f func(int, int) int) {
 	result := a[0]
 	for i := 1; i < len(a); i++ {
-		result = f(a[i], result)
+		result = f(result, a[i])
 	}
 	fmt.Println(result)
 }

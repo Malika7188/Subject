@@ -8,16 +8,15 @@ func SaveAndMiss(arg string, num int) string {
 		return arg
 	}
 
-	for i, ch := range arg {
+	for i := 0; i < len(arg); i++ {
 		if (i/num)%2 == 0 {
-			res += string(ch)
+			res += string(arg[i])
 		}
 	}
 	return res
 }
-
 func main() {
-	fmt.Println(SaveAndMiss("123456789", 3))
+	fmt.Println(SaveAndMiss("e 5£ @ 8* 7 =56 ;", 2))
 	fmt.Println(SaveAndMiss("abcdefghijklmnopqrstuvwyz", 3))
 	fmt.Println(SaveAndMiss("", 3))
 	fmt.Println(SaveAndMiss("hello you all ! ", 0))

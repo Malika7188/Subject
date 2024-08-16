@@ -1,15 +1,15 @@
 package main
 
-import (
-	// "github.com/01-edu/z01"
-	"fmt"
-)
+import "fmt"
 
 func FromTo(from int, to int) string {
 	res := ""
 
 	if from < 0 || from > 99 || to < 0 || to > 99 {
-		return "invalid input\n"
+		return "Invalid\n"
+	}
+	if from == to {
+		return Itoa(from) + "\n"
 	}
 	if from < to {
 		for i := from; i <= to; i++ {
@@ -42,6 +42,9 @@ func Itoa(num int) string {
 	if num < 0 {
 		neg = true
 		num *= -1
+	}
+	if num == 0 {
+		return "0"
 	}
 	res := ""
 	for num > 0 {

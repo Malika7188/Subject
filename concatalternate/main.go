@@ -2,26 +2,17 @@ package main
 
 import "fmt"
 
-func ConcatAlternate(slice1,slice2 []int) []int {
-	result := []int{}
+func ConcatAlternate(slice1, slice2 []int) []int {
+	var result []int
 
-	// len1, len2 := len(slice1), len(slice2)
-
-	if len(slice2) > len(slice1) {
-		for i := 0; i < len(slice1); i++ {
-			result = append(result, slice1[i])
+	if len(slice1) < len(slice2) {
+		slice1, slice2 = slice2, slice1
+	}
+	for i, v := range slice1 {
+		result = append(result, v)
+		if i < len(slice2) {
 			result = append(result, slice2[i])
 		}
-		result = append(result, slice2[len(slice1):]...)
-	}
-	if len(slice1) == len(slice2) {
-		for i := 0; i < len(slice1); i++ {
-			result = append(result, slice1[i])
-			result = append(result, slice2[i])
-		}
-	}
-	if len(slice2) == 0 {
-		result = append(result, slice1...)
 	}
 	return result
 }

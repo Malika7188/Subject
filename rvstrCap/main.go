@@ -1,8 +1,9 @@
 package main
 
 import (
-	"fmt"
 	"os"
+
+	"github.com/01-edu/z01"
 )
 
 func main() {
@@ -11,7 +12,7 @@ func main() {
 	}
 	args := os.Args[1:]
 	for _, str := range args {
-		fmt.Println(st(str))
+		PS(st(str))
 	}
 
 }
@@ -42,4 +43,10 @@ func Cap(s rune) bool {
 }
 func Low(s rune) bool {
 	return s >= 'a' && s <= 'z'
+}
+func PS(s string) {
+	for _, c := range s {
+		z01.PrintRune(c)
+	}
+	z01.PrintRune('\n')
 }

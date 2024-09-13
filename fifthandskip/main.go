@@ -1,39 +1,53 @@
 package main
 
 import (
-	"fmt"
-	"os"
+	"github.com/01-edu/go-tests/lib/challenge"
+	"github.com/01-edu/go-tests/solutions"
 )
 
 func FifthAndSkip(str string) string {
-	if len(str) == 0 {
-		return ""
+
+	if str == "" {
+		return "\n"
 	}
-	word := ""
-	for _, char := range str {
-		if char == ' ' {
+	nonspaces := 0
+	for _, c := range str {
+		if c != ' ' {
+			nonspaces++
+		}
+	}
+	if nonspaces < 5 {
+		return ("Invalid Input\n")
+
+	}
+	keep := []rune{}
+	count := 0
+	for _, c := range str {
+		if c == ' ' {
 			continue
 		}
-		word += string(char)
-	}
-	if len(word) < 5 {
-		os.Stdout.WriteString("invalid input\n")
-		return ""
-	}
-	result := ""
-	for i := 0; i < len(word); i += 5 {
-		if i+5 > len(word) {
-			result += word[i:]
-		} else {
-			result += word[i:i+5] + " "
+		if count == 5 {
+			keep = append(keep, ' ')
+			count = 0
+			continue
 		}
-		i++
+		count++
+		keep = append(keep, c)
 	}
-	return result + "\n"
+	return string(keep) + "\n"
+
 }
+
+// func main() {
+// 	fmt.Print(FifthAndSkip("abcdefghijklmnopqrstuwxyz"))
+// 	fmt.Print(FifthAndSkip("This is a short sentence"))
+// 	fmt.Print(FifthAndSkip("1234"))
+// 	fmt.Print(FifthAndSkip(""))
+// }
+
 func main() {
-	fmt.Print(FifthAndSkip("abcdefghijklmnopqrstuwxyz"))
-	fmt.Print(FifthAndSkip("This is a short sentence"))
-	fmt.Print(FifthAndSkip("1234"))
-	fmt.Print(FifthAndSkip(""))
+	table := []string{"1234556789", "e 5£ @ 8* 7 =56 ;", "QKplq%QSw", "", "hello \\! n4ght cr3a8ure7 ", "Kimetsu no Yaiba", "8595485-52", "-552", "w58tw7474abc", "Po65 4o"}
+	for _, s := range table {
+		challenge.Function("FifthAndSkip", FifthAndSkip, solutions.FifthAndSkip, s)
+	}
 }

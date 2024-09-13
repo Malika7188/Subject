@@ -1,6 +1,10 @@
 package main
 
 import (
+	"os"
+	"strconv"
+	"strings"
+
 	"github.com/01-edu/z01"
 )
 
@@ -17,11 +21,16 @@ func Pairs(n []int, target int) [][]int {
 	return res
 
 }
-func main() {
-	nums, target := []int{1, 2, 3, 4, 5}, 6
-	nu, tar := []int{-1, 2, -3, 4, -5},1
-	print(Pairs(nums, target))
-	print(Pairs(nu, tar))
+func parseArray(input string) []int {
+	input = strings.Trim(input, "[]")
+	parts := strings.Split(input, ",")
+	arr := []int{}
+	for _, slice := range parts {
+		num, _ := strconv.Atoi(strings.TrimSpace(slice))
+		arr = append(arr, num)
+	}
+	return arr
+
 }
 
 func print(val [][]int) {
@@ -46,4 +55,19 @@ func print(val [][]int) {
 	}
 	z01.PrintRune(']')
 	z01.PrintRune('\n')
+}
+
+func main() {
+
+	if len(os.Args) != 3 {
+		return
+	}
+	args := parseArray(os.Args[1])
+	num, _ := strconv.Atoi(os.Args[2])
+
+	print(Pairs(args, num))
+	// nums, target := []int{1, 2, 3, 4, 5}, 6
+	// nu, tar := []int{-1, 2, -3, 4, -5},1
+	// print(Pairs(nums, target))
+	// print(Pairs(nu, tar))
 }

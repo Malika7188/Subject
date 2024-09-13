@@ -6,6 +6,9 @@ import (
 )
 
 func ZipString(s string) string {
+	if s == "" {
+		return s
+	}
 	count := 1
 	res := ""
 	for i := 1; i < len(s); i++ {

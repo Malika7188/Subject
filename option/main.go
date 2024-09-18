@@ -18,6 +18,10 @@ func main() {
 			fmt.Println("inavaalid options")
 			return
 		}
+		if str == "-" {
+			fmt.Println("invalid option")
+			return
+		}
 		for i, c := range str[1:] {
 			if !valid(c) {
 				fmt.Println("invalid options")

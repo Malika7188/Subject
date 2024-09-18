@@ -38,7 +38,7 @@ func main() {
 			}
 
 		}
-		if new == "{}" || new == "[]" || new == "()" || str == ""{
+		if new == "{}" || new == "[]" || new == "()" || str == "" {
 			fmt.Println("OK")
 		} else {
 			fmt.Println("ERROR")

@@ -30,7 +30,6 @@ func parseArray(input string) []int {
 		arr = append(arr, num)
 	}
 	return arr
-
 }
 
 func print(val [][]int) {

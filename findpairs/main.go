@@ -1,11 +1,9 @@
 package main
 
 import (
+	"fmt"
 	"os"
 	"strconv"
-	"strings"
-
-	"github.com/01-edu/z01"
 )
 
 func Pairs(n []int, target int) [][]int {
@@ -22,51 +20,51 @@ func Pairs(n []int, target int) [][]int {
 
 }
 func parseArray(input string) []int {
-	input = strings.Trim(input, "[]")
-	parts := strings.Split(input, ",")
-	arr := []int{}
-	for _, slice := range parts {
-		num, _ := strconv.Atoi(strings.TrimSpace(slice))
-		arr = append(arr, num)
+	if len(input) < 3 || input[0] != '[' || input[len(input)-1] != ']' {
+		fmt.Println("invalid input")
+		os.Exit(0)
+	} else {
+		input = input[1 : len(input)-1]
 	}
-	return arr
+	arr := Split(input, ", ")
+	res := []int{}
+	for _, v := range arr {
+		num, err := strconv.Atoi(v)
+		if err != nil {
+			fmt.Printf("Invalid number %v\n", v)
+			os.Exit(0)
+		}
+		res = append(res, num)
+	}
+	// fmt.Println(res)
+	return res
 }
 
-func print(val [][]int) {
-	length := len(val)
-
-	z01.PrintRune('[')
-
-	// fmt.Println(length)
-	for i := 0; i < length; i++ {
-		z01.PrintRune('[')
-		for j := 0; j < len(val[i]); j++ {
-			if j != 0 {
-				z01.PrintRune(' ')
+func Split(s string, sep string) []string {
+	res := []string{}
+	start := 0
+	for i := 0; i < len(s); i++ {
+		if i+len(sep) < len(s) {
+			if s[i:i+len(sep)] == sep {
+				res = append(res, s[start:i])
+				start = i + len(sep)
 			}
-			z01.PrintRune(rune(val[i][j]) + '0')
-
 		}
-		z01.PrintRune(']')
-		if i < length-1 {
-			z01.PrintRune(' ')
+		if i == len(s)-1 {
+			res = append(res, s[start:])
 		}
 	}
-	z01.PrintRune(']')
-	z01.PrintRune('\n')
+	return res
 }
 
 func main() {
 
 	if len(os.Args) != 3 {
+		fmt.Println("invalid input")
 		return
 	}
 	args := parseArray(os.Args[1])
 	num, _ := strconv.Atoi(os.Args[2])
 
-	print(Pairs(args, num))
-	// nums, target := []int{1, 2, 3, 4, 5}, 6
-	// nu, tar := []int{-1, 2, -3, 4, -5},1
-	// print(Pairs(nums, target))
-	// print(Pairs(nu, tar))
+	fmt.Println(Pairs(args, num))
 }

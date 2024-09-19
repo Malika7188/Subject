@@ -17,13 +17,13 @@ func main() {
 				new += string(ch)
 			}
 		}
-		if new == ""{
+		if new == "" {
 			fmt.Println("OK")
 			continue
 		}
 		// fmt.Println(new)
 		count := 1
-		for count > 0 {
+		for count > 0 || len(new) > 2 {
 			count = 0
 			for i := 0; i < len(new); i++ {
 				if i+2 < len(new) && new[i] == '{' && new[i+1] == '}' {

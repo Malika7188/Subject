@@ -17,27 +17,30 @@ func main() {
 				new += string(ch)
 			}
 		}
+		if new == ""{
+			fmt.Println("OK")
+			continue
+		}
 		// fmt.Println(new)
 		count := 1
-		for count > 0 && len(new) > 2 {
+		for count > 0 {
 			count = 0
 			for i := 0; i < len(new); i++ {
-				if new[i] == '{' && new[i+1] == '}' {
+				if i+2 < len(new) && new[i] == '{' && new[i+1] == '}' {
 					new = new[:i] + new[i+2:]
 					count++
 				}
-				if new[i] == '[' && new[i+1] == ']' {
+				if i+2 < len(new) && new[i] == '[' && new[i+1] == ']' {
 					new = new[:i] + new[i+2:]
 					count++
 				}
-				if new[i] == '(' && new[i+1] == ')' {
+				if i+2 < len(new) && new[i] == '(' && new[i+1] == ')' {
 					new = new[:i] + new[i+2:]
 					count++
 				}
-
 			}
-
 		}
+
 		if new == "{}" || new == "[]" || new == "()" || str == "" {
 			fmt.Println("OK")
 		} else {

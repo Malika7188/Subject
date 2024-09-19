@@ -29,48 +29,37 @@ func main() {
 		for _, s := range slice1 {
 			if StringContains(str, s) {
 				count++
+				if str[len(str)-1] == ',' {
+					str = str[:len(str)-1]
+				}
 				fmt.Printf("%v: %v\n", count, str)
-				break
 			}
 		}
 	}
 }
 
 func Split(s string, sep string) []string {
-	var result []string
-	var word string
-
-	sepLen := len(sep)
-	if sepLen == 0 {
-		return []string{s}
-	}
+	res := []string{}
+	start := 0
 
 	for i := 0; i < len(s); i++ {
-		if i+sepLen <= len(s) && s[i:i+sepLen] == sep {
-			if word != "" {
-				result = append(result, word)
-				word = ""
+		if i+len(sep) < len(s) {
+			if s[i:i+len(sep)] == sep {
+				res = append(res, s[start:i])
+				start = i + len(sep)
 			}
-			i += sepLen - 1 // Skip over the separator
-		} else {
-			word += string(s[i])
+		}
+		if i == len(s)-1 {
+			res = append(res, s[start:])
 		}
 	}
-
-	if word != "" {
-		result = append(result, word)
-	}
-
-	return result
+	return res
 }
 
-// Improved StringContains function to handle substring search
 func StringContains(s string, r string) bool {
 	if len(r) == 0 || len(s) == 0 {
 		return false
 	}
-
-	// Search for the substring `r` in `s`
 	for i := 0; i <= len(s)-len(r); i++ {
 		if s[i:i+len(r)] == r {
 			return true

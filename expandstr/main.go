@@ -17,7 +17,7 @@ func main() {
 	res := ""
 
 	for i := 0; i < len(words); i++ {
-		if i != len(words)-1 {
+		if len(words)-1 != ' ' {
 			res += words[i] + "   "
 		} else {
 			res += words[i]

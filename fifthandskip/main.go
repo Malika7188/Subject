@@ -10,13 +10,13 @@ func FifthAndSkip(str string) string {
 	if str == "" {
 		return "\n"
 	}
-	nonspaces := 0
-	for _, c := range str {
-		if c != ' ' {
-			nonspaces++
-		}
-	}
-	if nonspaces < 5 {
+	// nonspaces := 0
+	// for _, c := range str {
+	// 	if c != ' ' {
+	// 		nonspaces++
+	// 	}
+	// }
+	if len(str) < 5 {
 		return ("Invalid Input\n")
 
 	}
@@ -43,10 +43,11 @@ func FifthAndSkip(str string) string {
 // 	fmt.Print(FifthAndSkip("This is a short sentence"))
 // 	fmt.Print(FifthAndSkip("1234"))
 // 	fmt.Print(FifthAndSkip(""))
+// 	fmt.Print(FifthAndSkip("e 5£jhy @ a* 7 =56 ;"))
 // }
 
 func main() {
-	table := []string{"1234556789", "e 5£ @ 8* 7 =56 ;", "QKplq%QSw", "", "hello \\! n4ght cr3a8ure7 ", "Kimetsu no Yaiba", "8595485-52", "-552", "w58tw7474abc", "Po65 4o"}
+	table := []string{"1234556789", "e 5£ jhy@ a* 7 =56 ;", "QKplq%QSw", "", "hello \\! n4ght cr3a8ure7 ", "Kimetsu no Yaiba", "8595485-52", "-552", "w58tw7474abc", "Po65 4o"}
 	for _, s := range table {
 		challenge.Function("FifthAndSkip", FifthAndSkip, solutions.FifthAndSkip, s)
 	}

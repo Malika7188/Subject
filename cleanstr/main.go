@@ -12,11 +12,11 @@ func main() {
 	str := os.Args[1]
 	words := SplitS(str)
 	res := ""
-	for _, char := range words {
-		if char == " " {
-			res += string(char)
-		} else {
+	for i, char := range words {
+		if i != len(words)-1  {
 			res += string(char) + " "
+		} else {
+			res += string(char)
 		}
 	}
 	fmt.Println(res)
@@ -39,4 +39,3 @@ func SplitS(str string) []string {
 	}
 	return word
 }
-

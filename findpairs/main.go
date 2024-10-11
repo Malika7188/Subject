@@ -64,8 +64,17 @@ func main() {
 		return
 	}
 	args := parseArray(os.Args[1])
-	num, _ := strconv.Atoi(os.Args[2])
+	num, err := strconv.Atoi(os.Args[2])
+	if err != nil {
+		fmt.Println("Invalid target sum.")
+		return
+	}
 
 	pairs := Pairs(args, num)
-	fmt.Printf("Pairs with sum %d: %v\n", num, pairs)
+	if len(pairs) == 0 {
+		fmt.Println("no pairs found")
+	} else {
+
+		fmt.Printf("Pairs with sum %d: %v\n", num, pairs)
+	}
 }

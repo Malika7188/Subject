@@ -6,30 +6,32 @@ import (
 )
 
 func main() {
-	if len(os.Args) != 2 {
+	args := os.Args
+
+	if len(args) != 2 {
 		return
 	}
+	str := args[1]
 
-	arg := os.Args[1]
-	result := ""
+	result := PigLatiin(str)
 
-	vowels := []byte{'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
-
-	for i := 0; i < len(arg); i++ {
-		for _, vow := range vowels {
-			if arg[0] == vow {
-				result = arg + "ay"
-				break
-			}
-			if arg[i] == vow {
-				result = arg[i:] + arg[:i] + "ay"
-				break
-			}
-		}
-	}
 	if result == "" {
-		fmt.Println("No vowels")
+		fmt.Println("No Vowels")
 	} else {
 		fmt.Println(result)
 	}
+}
+
+func PigLatiin(str string) string {
+
+	for i, ch := range str {
+		if ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u' ||
+			ch == 'A' || ch == 'E' || ch == 'I' || ch == 'O' || ch == 'U' {
+			if i == 0 {
+				return str + "ay"
+			}
+			return str[i:] + str[:i] + "ay"
+		}
+	}
+	return ""
 }

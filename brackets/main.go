@@ -10,41 +10,34 @@ func main() {
 		return
 	}
 	args := os.Args[1:]
-	new := ""
+
 	for _, str := range args {
-		for _, ch := range str {
-			if ch == '{' || ch == '}' || ch == '[' || ch == ']' || ch == '(' || ch == ')' {
-				new += string(ch)
+		new := ""
+		for _, c := range str {
+			if c == '{' || c == '}' || c == '[' || c == ']' || c == '(' || c == ')' {
+				new += string(c)
 			}
 		}
 		if new == "" {
 			fmt.Println("OK")
 			continue
 		}
-		// fmt.Println(new)
 		count := 1
-		for count > 0 || len(new) > 2 {
+		for count > 0 {
 			count = 0
-			for i := 0; i < len(new); i++ {
-				if i+2 < len(new) && new[i] == '{' && new[i+1] == '}' {
+
+			for i := 0; i < len(new)-1; i++ {
+				if (new[i] == '{' && new[i+1] == '}') || (new[i] == '[' && new[i+1] == ']') || (new[i] == '(' && new[i+1] == ')') {
 					new = new[:i] + new[i+2:]
 					count++
-				}
-				if i+2 < len(new) && new[i] == '[' && new[i+1] == ']' {
-					new = new[:i] + new[i+2:]
-					count++
-				}
-				if i+2 < len(new) && new[i] == '(' && new[i+1] == ')' {
-					new = new[:i] + new[i+2:]
-					count++
+					break
 				}
 			}
 		}
-
-		if new == "{}" || new == "[]" || new == "()" || str == "" {
+		if new == "" {
 			fmt.Println("OK")
 		} else {
-			fmt.Println("ERROR")
+			fmt.Println("Error")
 		}
 	}
 }

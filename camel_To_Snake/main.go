@@ -1,48 +1,49 @@
 package main
 
-import "fmt"
+import (
+	"github.com/01-edu/go-tests/lib/challenge"
+	"github.com/01-edu/go-tests/solutions"
+)
 
 func CamelToSnakeCase(s string) string {
 	if s == "" {
 		return s
 	}
-	if !Valid(s) {
-		return s
-	}
 	res := ""
+
 	for i := 0; i < len(s); i++ {
-		if i != 0 && Up(rune(s[i])) && i+1 < len(s) && Low(rune(s[i+1])) {
-			res += "_" + string(s[i])
-			// res += string(s[i])
-		} else if Low(rune(s[i])) || i == 0 && Up(rune(s[i])) {
-			res += string(s[i])
-		} else {
+		if i < len(s)-1 && (s[i] >= 'A' && s[i] <= 'Z' && s[i+1] >= 'A' && s[i+1] <= 'Z') || (s[i] >= '0' && s[i] <= '9') || (i == len(s)-1 && s[i] >= 'A' && s[i] <= 'Z') {
 			return s
 		}
+		if i > 0 && (s[i] >= 'A' && s[i] <= 'Z') {
+			res += "_"
+		}
+		res += string(s[i])
 	}
 	return res
-
-}
-func Valid(str string) bool {
-	for _, c := range str {
-		if (c < 'a' || c > 'z') && (c < 'A' || c > 'Z') {
-			return false
-		}
-	}
-	return true
-}
-func Up(s rune) bool {
-	return s >= 'A' && s <= 'Z'
-}
-func Low(s rune) bool {
-	return s >= 'a' && s <= 'z'
 }
 
 func main() {
-	fmt.Println(CamelToSnakeCase("HelloWorld"))
-	fmt.Println(CamelToSnakeCase("helloWorld"))
-	fmt.Println(CamelToSnakeCase("camelCase"))
-	fmt.Println(CamelToSnakeCase("CAMELtoSnackCASE"))
-	fmt.Println(CamelToSnakeCase("camelToSnakeCase"))
-	fmt.Println(CamelToSnakeCase("hey2"))
+	args := []string{
+		"CamelCase",
+		"camelCase",
+		"HelloWorld",
+		"132",
+		" ",
+		"",
+		"A",
+		"abcs",
+		"AbC",
+		"AbCEf",
+		"abcAree",
+		"ahe1Abde",
+		"tesTing1",
+		"SOME_VARIABLE",
+		"ASuperLonGVariableName",
+		"thisIsaTestOfCamelCase",
+		"aA",
+	}
+	for _, arg := range args {
+		challenge.Function("CamelToSnakeCase", CamelToSnakeCase, solutions.CamelToSnakeCase, arg)
+	}
 }
